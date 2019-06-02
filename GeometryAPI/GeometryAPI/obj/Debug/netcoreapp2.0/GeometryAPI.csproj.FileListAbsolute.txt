@@ -1,0 +1,11 @@
+C:\Users\po4ta\Desktop\GeometryAPI\GeometryAPI\GeometryAPI\obj\Debug\netcoreapp2.0\GeometryAPI.csprojAssemblyReference.cache
+C:\Users\po4ta\Desktop\GeometryAPI\GeometryAPI\GeometryAPI\obj\Debug\netcoreapp2.0\GeometryAPI.csproj.CoreCompileInputs.cache
+C:\Users\po4ta\Desktop\GeometryAPI\GeometryAPI\GeometryAPI\obj\Debug\netcoreapp2.0\GeometryAPI.AssemblyInfoInputs.cache
+C:\Users\po4ta\Desktop\GeometryAPI\GeometryAPI\GeometryAPI\obj\Debug\netcoreapp2.0\GeometryAPI.AssemblyInfo.cs
+C:\Users\po4ta\Desktop\GeometryAPI\GeometryAPI\GeometryAPI\bin\Debug\netcoreapp2.0\GeometryAPI.deps.json
+C:\Users\po4ta\Desktop\GeometryAPI\GeometryAPI\GeometryAPI\bin\Debug\netcoreapp2.0\GeometryAPI.runtimeconfig.json
+C:\Users\po4ta\Desktop\GeometryAPI\GeometryAPI\GeometryAPI\bin\Debug\netcoreapp2.0\GeometryAPI.runtimeconfig.dev.json
+C:\Users\po4ta\Desktop\GeometryAPI\GeometryAPI\GeometryAPI\bin\Debug\netcoreapp2.0\GeometryAPI.dll
+C:\Users\po4ta\Desktop\GeometryAPI\GeometryAPI\GeometryAPI\bin\Debug\netcoreapp2.0\GeometryAPI.pdb
+C:\Users\po4ta\Desktop\GeometryAPI\GeometryAPI\GeometryAPI\obj\Debug\netcoreapp2.0\GeometryAPI.dll
+C:\Users\po4ta\Desktop\GeometryAPI\GeometryAPI\GeometryAPI\obj\Debug\netcoreapp2.0\GeometryAPI.pdb
