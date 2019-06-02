@@ -13996,11 +13996,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\po4ta\\Desktop\\GeometryAPI\\GeometryAPI\\GeometryAPI\\GeometryAPI.csproj",
+      "projectUniqueName": "C:\\Users\\po4ta\\Desktop\\Geometry\\GeometryAPI\\GeometryAPI\\GeometryAPI.csproj",
       "projectName": "GeometryAPI",
-      "projectPath": "C:\\Users\\po4ta\\Desktop\\GeometryAPI\\GeometryAPI\\GeometryAPI\\GeometryAPI.csproj",
+      "projectPath": "C:\\Users\\po4ta\\Desktop\\Geometry\\GeometryAPI\\GeometryAPI\\GeometryAPI.csproj",
       "packagesPath": "C:\\Users\\po4ta\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\po4ta\\Desktop\\GeometryAPI\\GeometryAPI\\GeometryAPI\\obj\\",
+      "outputPath": "C:\\Users\\po4ta\\Desktop\\Geometry\\GeometryAPI\\GeometryAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

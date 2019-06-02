@@ -53,7 +53,7 @@ namespace GeometryAPI.Entity
             UserEntity user = new UserEntity()
             {
                 Email = "test@test.ru",
-                Password = "cb891b06ce3c1981cc00a1966ddfe98228011de9c582823ecdb2ccfe127a20df", //TODO hash этого пароля M9S206
+                Password = "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08", //TODO hash этого пароля test
                 Role = roles[1],
                 Name = "Test",
                 LastName = "Test",
