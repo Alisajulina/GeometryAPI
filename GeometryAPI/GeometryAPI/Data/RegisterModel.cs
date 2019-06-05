@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GeometryAPI.Data.Response
+namespace GeometryAPI.Data
 {
-    public class LoginResponse
+    public class RegisterModel
     {
-        public string Id { get; set; }
         public string Email { get; set; }
+        public string Password { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
-        public string GenderId { get; set; }
-
-        public string RoleId { get; set; }
+        public Guid GenderId { get; set; }
     }
 }

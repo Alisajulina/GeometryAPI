@@ -43,7 +43,7 @@ namespace GeometryAPI.Controllers
 
                 UserEntity user = await db.Users
                     .Include(u => u.Role)
-                    .Include(g=>g.Gender)
+                    .Include(g => g.Gender)
                     .Include(s => s.ShoppingCartLink)
                        .FirstOrDefaultAsync(u => u.Email == loginModel.Email && u.Password == PasswordHash);
 
@@ -57,18 +57,18 @@ namespace GeometryAPI.Controllers
                     return BadRequest("Некорректные логин и(или) пароль");
                 }
 
-                var response = new LoginResponse
+                var response = new UserResponse
                 {
-                    Id = user.Id.ToString(),
+                    Id = user.Id,
                     Email = user.Email,
-                    GenderId = user.GenderId.ToString(),
+                    GenderId = user.GenderId,
                     Name = user.Name,
                     LastName = user.LastName,
-                    RoleId = user.RoleId.ToString()
+                    RoleId = user.RoleId
                 };
 
                 return Json(response);
-                
+
 
             }
             catch (Exception e)
@@ -76,6 +76,76 @@ namespace GeometryAPI.Controllers
                 return StatusCode(500);
             }
 
+        }
+
+        [Route("Register")]
+        [HttpPost]
+        public async Task<IActionResult> Register([FromBody] RegisterModel registerModel)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest("Проверьте данные");
+                }
+
+                UserEntity user = await db.Users.FirstOrDefaultAsync(u => u.Email == registerModel.Email);
+
+                if (user != null)
+                {
+                    return BadRequest("Такой пользователь уже существует");
+                }
+
+                string PasswordHash = GetHash(registerModel.Password);
+
+                UserEntity userEntity = new UserEntity()
+                {
+                    Email = registerModel.Email,
+                    GenderId = registerModel.GenderId,
+                    Name = registerModel.Name,
+                    LastName = registerModel.LastName,
+                    Password = PasswordHash,
+                    RoleId = GetCustomerRole()
+                };
+
+                await db.Users.AddAsync(userEntity);
+                await db.SaveChangesAsync();
+
+                UserResponse response = new UserResponse()
+                {
+                    Email = userEntity.Email,
+                    GenderId = userEntity.GenderId,
+                    Name = userEntity.Name,
+                    LastName = userEntity.LastName,
+                    RoleId = userEntity.RoleId,
+                    Id = userEntity.Id
+                };
+
+                ClaimsIdentity identity = GetIdentity(userEntity);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
+
+                return Json(response);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500);
+            }
+        }
+
+        [Route("Logout")]
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            try
+            {
+                await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+                return StatusCode(200);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500);
+            }
         }
 
 
@@ -95,7 +165,7 @@ namespace GeometryAPI.Controllers
                         new Claim(CustomClaimType.ShoppingCart , user.ShoppingCartLink.ToString())
                 };
 
-                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "dTaxCookie", ClaimsIdentity.DefaultNameClaimType,
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "GeometryCookie", ClaimsIdentity.DefaultNameClaimType,
                     ClaimsIdentity.DefaultRoleClaimType);
 
                 return claimsIdentity;
@@ -106,6 +176,21 @@ namespace GeometryAPI.Controllers
             }
 
         }
+
+        private Guid GetCustomerRole()
+        {
+            try
+            {
+                var role = db.Roles.FirstOrDefaultAsync(r => r.Name == "Customer").Result;
+
+                return role.Id;
+            }
+            catch (Exception e)
+            {
+                return Guid.Empty;
+            }
+        }
+
         #endregion
 
 
