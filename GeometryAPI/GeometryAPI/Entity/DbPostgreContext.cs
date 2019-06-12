@@ -19,7 +19,7 @@ namespace GeometryAPI.Entity
         public DbSet<FileStorageEntity> FileStorages { get; set; }
         public DbSet<ProductFileEntity> ProductFiles { get; set; }
 
-        public DbSet<BrandEntity> Brands { get; set; }
+        public DbSet<WishListEntity> WishLists { get; set; }
         public DbSet<CategoryEntity> Categories { get; set; }
         public DbSet<SubCategoryEntity> SubCategories { get; set; }
         public DbSet<ClothTypeEntity> ClothTypes { get; set; }
@@ -38,6 +38,16 @@ namespace GeometryAPI.Entity
 
         private void InitialInitialization()
         {
+
+            List<CategoryEntity> categories = new List<CategoryEntity>()
+            {
+                new CategoryEntity() {Name = "Категория-1"},
+                new CategoryEntity() {Name = "Категория-2"},
+                new CategoryEntity() {Name = "Категория-3"}
+            };
+
+           
+
             List<RoleEntity> roles = new List<RoleEntity>()
             {
                 new RoleEntity() { Name = "Operator" },
@@ -60,9 +70,28 @@ namespace GeometryAPI.Entity
                 Gender = genders[0]
             };
 
+            Categories.AddRange(categories);
+            
+
             Roles.AddRange(roles);
             Genders.AddRange(genders);
             Users.Add(user);
+            SaveChanges();
+
+            List<SubCategoryEntity> subCategories = new List<SubCategoryEntity>()
+            {
+                new SubCategoryEntity() {Name = "Подкатегория-1-1", CategoryId= categories[0].Id},
+                new SubCategoryEntity() {Name = "Подкатегория-1-2", CategoryId= categories[0].Id},
+                new SubCategoryEntity() {Name = "Подкатегория-1-3", CategoryId= categories[0].Id},
+                new SubCategoryEntity() {Name = "Подкатегория-2-1", CategoryId= categories[1].Id},
+                new SubCategoryEntity() {Name = "Подкатегория-2-2", CategoryId= categories[1].Id},
+                new SubCategoryEntity() {Name = "Подкатегория-2-3", CategoryId= categories[1].Id},
+                new SubCategoryEntity() {Name = "Подкатегория-3-1", CategoryId= categories[2].Id},
+                new SubCategoryEntity() {Name = "Подкатегория-3-2", CategoryId= categories[2].Id},
+                new SubCategoryEntity() {Name = "Подкатегория-3-3", CategoryId= categories[2].Id}
+            };
+
+            SubCategories.AddRange(subCategories);
             SaveChanges();
         }
 

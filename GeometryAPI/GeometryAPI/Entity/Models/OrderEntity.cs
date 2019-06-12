@@ -16,5 +16,8 @@ namespace GeometryAPI.Entity.Models
 
         public Guid OrderStatusId { get; set; }
         public OrderStatusEntity OrderStatus { get; set; }
+
+        public long TrackNumber { get; set; }
+        
     }
 }

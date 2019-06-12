@@ -27,7 +27,10 @@ namespace GeometryAPI.Controllers
         {
             try
             {
-                IEnumerable<GenderEntity> gender = db.Genders.Where(d=>d.IsDeleted != true).ToList();
+                IEnumerable<GenderEntity> gender = db
+                    .Genders
+                    .Where(d=>d.IsDeleted != true)
+                    .ToList();
 
                 return Json(gender);
             }
@@ -36,6 +39,10 @@ namespace GeometryAPI.Controllers
                 return StatusCode(500);
             }
         }
+
+
+
+
 
     }
 }
