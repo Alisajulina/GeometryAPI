@@ -80,7 +80,7 @@ namespace GeometryAPI.Controllers
 
         [Route("Register")]
         [HttpPost]
-        public async Task<IActionResult> Register([FromBody] RegisterModel registerModel)
+        public async Task<IActionResult> Register([FromBody]RegisterModel registerModel)
         {
             try
             {
@@ -121,8 +121,8 @@ namespace GeometryAPI.Controllers
                     Id = userEntity.Id
                 };
 
-                ClaimsIdentity identity = GetIdentity(userEntity);
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
+                //ClaimsIdentity identity = GetIdentity(userEntity);
+                //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
 
                 return Json(response);
             }
