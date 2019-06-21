@@ -28,6 +28,8 @@ namespace GeometryAPI.Entity
         public DbSet<OrderEntity> Orders { get; set; }
         public DbSet<OrderStatusEntity> OrderStatuses { get; set; }
 
+        public DbSet<SizeDictionary> SizeDictionary { get; set; }
+
 
         public DbPostgreContext(DbContextOptions<DbPostgreContext> options) : base(options)
         {
