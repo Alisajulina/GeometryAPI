@@ -36,17 +36,22 @@ namespace GeometryAPI.Controllers
                     return StatusCode(500);
                 }
 
+                var contentType = System.Net.Mime.MediaTypeNames.Application.Octet;
+                string fileName = file.FileName;
+
                 if (thumbnail != true)
                 {
 
                     byte[] content = file.FileContent.FullContentData;
+                    
 
-                    return Json(content);
+                    return File(content, contentType, fileName);
                 }
 
                 byte[] cont = file.FileContent.CutContentData;
 
-                return Json(cont);
+
+                return File(cont, contentType, fileName);
             }
             catch (Exception e)
             {
